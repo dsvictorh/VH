@@ -1,0 +1,82 @@
+@import 'utils.less';
+
+//Structure
+.wrap{
+	width: @site-width;
+	margin: 0 auto;
+
+	> section{
+		margin-top: 70px;
+		padding: 2%;
+		.box();
+	}
+}
+
+#site-nav{
+	position: fixed;
+	width: 100%;
+	top: 0;
+
+	ul{
+		&::after{
+			content: '';
+			display: table;
+			clear: left;
+		}
+
+		li{
+			float: left;
+			font-size: 1.4m;
+			line-height: 2.5em;
+			margin-left: 14.5%;
+		}	
+	}
+}
+
+main.wrap{
+	margin-top: 100px;
+	padding: 20px 0;
+}
+
+
+//Layout
+html{
+	font-size: 62.5%;
+}
+
+body{
+	font-family: Optima, Calibri, sans-serif;
+	font-size: 1.6em;
+	color: @font;
+}
+
+header{
+	background: @heading;
+	.border(2px);
+}
+
+h1{
+	text-align: center;
+	font-size: 3.5em;
+	.border(2px);
+	margin-bottom: 10px;
+}
+
+h2{
+	text-align: center;
+	font-size: 1.3em;
+	color: @subtitle;
+}
+
+h3{
+	font-size: 1.5em;
+}
+
+p{
+	margin-bottom: 15px;
+	line-height: 1.2em;
+}
+
+.box{
+	.box();
+}
