@@ -13,24 +13,28 @@
 		<meta name="twitter:card" content="summary">
 		<meta property="og:description” content=”This is my personal web page/portfolio of public projects developed and conceptually designed by me. My personal designer is usually my sister Stephanie Herrera and most likely what you see here might have designing support from her"/>
 		<link rel="author" href="https://plus.google.com/+VictorHerreraR"/>
+		<link rel="icon" href="img/logo/logo.ico">
 		<link rel="stylesheet" href="css/site.css"/>
 		<script type="text/javascript" src="js/lib/require.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.js"></script>
 	</head>
 	<body>
 		<header id="site-nav">
 			<nav>
 				<ul class="wrap">
 					<li>
-						<a href="#site-nav">Logo</a>
+						<a href="javascript:void(0)" data-scroll="0">
+							<img src="img/logo/logo-small.png" width="35" height="35" alt="VH Logo" />
+						</a>
 					</li>
 					<li>
-						<a href="#">About Me</a>
+						<a href="javascript:void(0)" data-scroll="#about-me">About Me</a>
 					</li>
 					<li>
-						<a href="#">Work</a>
+						<a href="javascript:void(0)" data-scroll="#my-work">Work</a>
 					</li>
 					<li>
-						<a href="#">Contact</a>
+						<a  href="javascript:void(0)" data-scroll="">Contact</a>
 					</li>
 				</ul>
 			</nav>
@@ -38,7 +42,7 @@
 		<main class="wrap">
 			<h1>Victor Herrera R.</h1>
 			<h2>Software Engineer / Senior Web Developer</h2>
-			<section>
+			<section id="about-me">
 				<h3>About Me</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fringilla augue non erat euismod semper. Nulla elementum tincidunt velit, non tempor risus dictum non. Vestibulum iaculis, est vitae dapibus molestie, magna lectus ultricies lectus, et iaculis nisl augue volutpat ante. Donec sit amet nisi eget tellus accumsan laoreet. Etiam scelerisque tristique ante sed ultrices. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent vehicula ligula iaculis dapibus interdum. Integer eu luctus enim. Etiam hendrerit consectetur sapien nec vestibulum. Pellentesque cursus ornare nisl id semper. Cras lobortis purus ante, non ultricies velit pretium sed.</p>
 
@@ -48,7 +52,7 @@
 
 				<p>In ac libero id felis tristique sodales in at risus. Proin accumsan, tortor vel consequat congue, dui massa fringilla justo, in eleifend erat mauris a urna. Sed in est tincidunt purus eleifend rutrum eu feugiat velit. Maecenas varius velit sit amet lacus suscipit sagittis. Aenean vel aliquam velit, quis faucibus sem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris scelerisque sapien ac arcu porta pulvinar. Nullam sagittis nisi vitae eros porttitor laoreet. Vivamus leo erat, pretium sit amet iaculis eu, commodo id ipsum. Donec hendrerit arcu a libero facilisis, sed suscipit turpis consequat.</p>
 			</section>
-			<section>
+			<section id="my-work">
 				<article>
 					<header>
 						<h3>My Work</h3>
@@ -66,9 +70,18 @@
 						</section>
 						<section class="box">
 						</section>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fringilla augue non erat euismod semper. Nulla elementum tincidunt velit, non tempor risus dictum non. Vestibulum iaculis, est vitae dapibus molestie, magna lectus ultricies lectus, et iaculis nisl augue volutpat ante. Donec sit amet nisi eget tellus accumsan laoreet. Etiam scelerisque tristique ante sed ultrices. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent vehicula ligula iaculis dapibus interdum. Integer eu luctus enim. Etiam hendrerit consectetur sapien nec vestibulum. Pellentesque cursus ornare nisl id semper. Cras lobortis purus ante, non ultricies velit pretium sed.</p>
 					</main>
 				</article>
 			</section>
 		</main>
+
+		<script type="text/javascript">
+			//include the utils library which is the core of the application where all dependencies are loaded
+			require(['js/utils', 'js/view-models/home'], function(app, view){
+				var viewModel = view.createView(app);
+				app.ko.applyBindings(viewModel);  
+			});
+		</script>
 	</body>
 </html>
