@@ -1,6 +1,40 @@
 @import 'utils.less';
 
 //Structure
+form{
+	display: inline-block;
+
+	&.two-columns{
+		width: 60%;
+
+		section{
+			display: inline-block;
+			margin-bottom: 5px;
+			width: 48%;
+
+			&.full{
+				width: 100%;
+			}
+		}
+	}
+
+	fieldset{
+		word-spacing: 0;
+
+		label{
+			line-height: 1.6em;
+		}
+
+		input[type="text"], input[type="email"]{
+			height: 35px;
+		}
+
+		textarea{
+			height: 100px;
+		}
+	}
+}
+
 .wrap{
 	width: @site-width;
 	margin: 0 auto;
@@ -13,25 +47,30 @@
 }
 
 #site-nav{
+	overflow: visible;
 	position: fixed;
 	width: 100%;
 	top: 0;
 	background: @heading;
 	.border(2px);
 
-	ul{
-		.clear;
+	nav{
+		position: relative;
 
-		li{
-			float: left;
-			font-size: 1.4em;
-			line-height: 1.4em;
-			margin-left: 14.5%;
+		ul{
+			.clear;
 
-			a, img{
-				vertical-align: middle;
-			}
-		}	
+			li{
+				float: left;
+				font-size: 1.4em;
+				line-height: 1.4em;
+				margin-left: 14.5%;
+
+				a, img{
+					vertical-align: middle;
+				}
+			}	
+		}
 	}
 }
 
@@ -50,6 +89,13 @@ body{
 	font-family: Optima, Calibri, sans-serif;
 	font-size: 1.6em;
 	color: @font;
+
+	> footer{
+		p{
+			font-size: 0.7em;
+			text-align: center;
+		}
+	}
 }
 
 header{
@@ -99,6 +145,6 @@ p{
 		padding: 1%;
 		margin: 15px 1.16%;  
 		float: left;
-		height: 150px;
+		height: 170px;
 	}
 }

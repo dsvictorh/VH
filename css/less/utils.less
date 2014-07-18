@@ -2,6 +2,7 @@
 @background: #F1F0F0;
 @heading: rgba(98, 106, 131, 0.7);
 @gray: #C7C7C7;
+@light-gray: #DFDFDF;
 @white: #FFF;
 @hover: #2C367C;
 @font: #272729;
@@ -42,7 +43,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, strong, sub, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -91,4 +92,42 @@ a{
 	&:hover{
 		color: @hover;
 	}
+}
+
+label{
+	cursor: pointer;
+}
+
+input, textarea{
+	border: 1px solid @light-gray;
+	padding: 9px;
+	box-sizing: border-box;
+
+	-webkit-transition: border 0.2s linear;
+    transition: border 0.2s linear;
+
+	&:focus{
+		border-color: @gray;
+	}
+}
+
+input{
+	margin: 0 0 5px 0;
+	width: 100%;
+}
+
+textarea{
+	margin: 0;
+	resize: none;	
+	width: 96.8%;
+}
+
+//Browsers default outline behavior override
+:focus, :active {
+	outline:none;
+}
+
+//Mozilla default outline behavior override
+::-moz-focus-inner {
+	border:0;
 }
