@@ -1,10 +1,19 @@
+//Fonts
+@font-face{
+	font-family:'Font-Awesome';
+	src:url('fonts/font-awesome.eot');
+	src:url('fonts/font-awesome.eot?#iefix') format('embedded-opentype'),
+	url('fonts/font-awesome.svg') format('svg'),
+	url('fonts/font-awesome.woff') format('woff')
+}
+
 //Colors
 @background: #F1F0F0;
 @heading: rgba(98, 106, 131, 0.7);
 @gray: #C7C7C7;
 @light-gray: #DFDFDF;
 @white: #FFF;
-@hover: #2C367C;
+@hover: #414C9B;
 @font: #272729;
 @subtitle: #5C5C5C;
 @box: rgba(236, 236, 236, 0.3);
@@ -31,6 +40,15 @@
 		content: '';
 		display: table;
 		clear: both;
+	}
+}
+
+.font-awesome(@icon-code, @size, @padding){
+	&:after{
+		font-family: 'Font-Awesome';
+		content: @icon-code;
+		padding: @padding;
+		font-size: @size;
 	}
 }
 
@@ -82,34 +100,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a{
-	color: @white;
-	text-decoration: none;
-
-	-webkit-transition: color 0.2s linear;
-    transition: color 0.2s linear;
-
-	&:hover{
-		color: @hover;
-	}
-}
-
-label{
-	cursor: pointer;
-}
-
-input, textarea{
-	border: 1px solid @light-gray;
-	padding: 9px;
-	box-sizing: border-box;
-
-	-webkit-transition: border 0.2s linear;
-    transition: border 0.2s linear;
-
-	&:focus{
-		border-color: @gray;
-	}
-}
 
 input{
 	margin: 0 0 5px 0;
@@ -120,6 +110,12 @@ textarea{
 	margin: 0;
 	resize: none;	
 	width: 96.8%;
+}
+
+//Recaptcha fix
+#recaptcha_area input[type="text"] {
+	display: inline-block;
+	height: auto;
 }
 
 //Browsers default outline behavior override

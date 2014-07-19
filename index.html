@@ -6,8 +6,8 @@
 		<meta name="description" content="Offical site of Victor Herrera R. Software Engineer and Web Developer"/>
 		<meta name="robots" content="INDEX, FOLLOW"/>
 		<meta property="og:title" content="Victor Herrera R. | Software Engineer - Senior Web Developer"/>
-		<meta property="og:image" content=""/>
-		<meta property="og:url" content=""/>
+		<meta property="og:image" content="http://www.vicherr.com/img/logo/logo-big.png"/>
+		<meta property="og:url" content="http://www.vicherr.com"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:admins" content="724602645"/>
 		<meta name="twitter:card" content="summary">
@@ -17,6 +17,12 @@
 		<link rel="stylesheet" href="css/site.css"/>
 		<script type="text/javascript" src="js/lib/require.js"></script>
 		<script type="text/javascript" src="js/lib/jquery.js"></script>
+		<script type="text/javascript">
+			var RecaptchaOptions = {
+			   theme: 'white',
+			   tabindex: 4
+			};
+		</script>
 	</head>
 	<body>
 		<header id="site-nav">
@@ -93,14 +99,23 @@
 							<textarea name="message" id="message" placeholder="Talk to me" required></textarea>
 						</section>
 						<section class="full">
-							<p style="font-size: 60px">RECAPTCHA HERE</p>
+							<button>Send</button>
+							<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC"></script>
+						    <noscript>
+						       <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC"
+						           height="300" width="500" frameborder="0"></iframe><br>
+						       <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+						       </textarea>
+						       <input type="hidden" name="recaptcha_response_field"
+						           value="manual_challenge">
+						    </noscript>
 						</section>
 					</fieldset>
 				</form>
 			</section>
 		</main>
 		<footer>
-			<p>All the work on this website is property of V&iacute;ctor Herrera<sup>&copy;</sup>. There is no permission to copy, edit or redistribute any of my work.</p>
+			<p>All the work on this website is property of &copy;<!-- ko text: year --><!-- /ko --> V&iacute;ctor Herrera. There is no permission to copy, edit or redistribute any of my work.</p>
 		</footer>
 		<script type="text/javascript">
 			//include the utils library which is the core of the application where all dependencies are loaded

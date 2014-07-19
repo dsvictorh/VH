@@ -7,6 +7,7 @@ define(['js/user-controls/floating-box.js'], function(floatingBox){
 		var ko = app.ko;
 
 		self.floatingBoxes = ko.observableArray([]);
+		self.year = ko.observable(new Date().getFullYear());
 
 		//Initialize the object
 		self.init();

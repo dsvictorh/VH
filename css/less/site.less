@@ -32,6 +32,11 @@ form{
 		textarea{
 			height: 100px;
 		}
+
+		button{
+			float: right;
+			margin-right: 5%;
+		}
 	}
 }
 
@@ -131,6 +136,54 @@ h3{
 p{
 	margin-bottom: 15px;
 	line-height: 1.2em;
+}
+
+a, button{
+	cursor: pointer;
+
+	-webkit-transition: color 0.2s linear, background 0.4s linear;
+    transition: color 0.2s linear, background 0.4s linear;
+}
+
+a{
+	color: @white;
+	text-decoration: none;
+
+	&:hover{
+		color: @hover;
+	}
+}
+
+button{
+	background: @light-gray;
+	margin-right: 4%;
+	border: 1px solid @gray;
+	font-size: 1.1em;
+	padding: 5px 8%;
+	color: @subtitle;
+
+	&:hover{
+		background: @hover;
+		border-color: @hover;
+		color: @white;
+	}
+}
+
+label{
+	cursor: pointer;
+}
+
+input, textarea{
+	border: 1px solid @light-gray;
+	padding: 9px;
+	box-sizing: border-box;
+
+	-webkit-transition: border 0.2s linear;
+    transition: border 0.2s linear;
+
+	&:focus{
+		border-color: @gray;
+	}
 }
 
 .box{
