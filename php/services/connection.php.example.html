@@ -1,0 +1,29 @@
+<?php
+class Connection{
+    
+    private $connection;
+
+    public function open(){
+        try{
+        
+            $this->connection = mysqli_connect("host", "user", "password", "db");
+
+            if(!$this->connection){
+                throw new Exception("Failed to connect to database");           
+            }else{
+                $this->connection->set_charset("utf8");
+                return  $this->connection;
+            }
+
+        }catch(Exception $ex){ 
+            throw $ex;
+        }
+    }
+
+    public function close(){
+        mysqli_close($this->connection);
+    }
+}
+
+$GLOBALS["db"] = new Connection();
+?>

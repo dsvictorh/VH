@@ -5,18 +5,17 @@ define(['js/user-controls/floating-box.js'], function(floatingBox){
 		//Private access members needed around the object
 		var self = this;
 		var ko = app.ko;
-
-		self.floatingBoxes = ko.observableArray([]);
-		self.year = ko.observable(new Date().getFullYear());
+		self.floatingBox = ko.observable();
+		self.year = ko.observable();
 
 		//Initialize the object
-		self.init();
+		self.init(ko);
 	};
 
 	//viewModel should always have an init function to initialize the needed values
-	viewModel.prototype.init = function(){
-		//The Knockout object is needed as a private member of viewModel to pass to the user controls we include in it
-		this.floatingBoxes([floatingBox.createControl(this.ko)]);
+	viewModel.prototype.init = function(ko){
+		this.floatingBox([floatingBox.createControl(ko)]);
+		this.year(new Date().getFullYear());
 	}
 
 	//Public access functions for this viewModel

@@ -1,14 +1,47 @@
-require_once("recaptchalib.php");
+<?php
 
-if(isset($_POST["action"]) && !empty($_POST["action"])) {
-	switch($_POST["action"]){
-		case "mail":
-			break;
-		default:
-			http_response_code(501);
-			echo json_encode("Action does not exist");
-			break;
-	}
+require_once("recaptchalib.php");
+require_once("services/work.php");
+
+header("Content-Type: application/json");
+
+if(isset($_REQUEST["controller"]) && !empty($_REQUEST["controller"])) {
+  switch($_REQUEST["controller"]){
+    case "mail":
+      break;
+    case "work":
+      handle_work($_REQUEST["action"]);
+      break;
+    default:
+      http_response_code(501);
+      echo json_encode("Controller " . $_REQUEST["controller"] . " does not exist");
+      break;
+  }
+}else{
+  http_response_code(500);
+  echo json_encode("No controller called");
+}
+
+function handle_work($action){
+  if(isset($action) && !empty($action)) {
+    switch($action){
+      case "list":
+        try{
+          echo json_encode(WorkService::list_work());
+        }catch(Exception $ex){
+          http_response_code(500);
+          echo json_encode($ex->getMessage());
+        }
+        break;
+      default:
+        http_response_code(501);
+        echo json_encode("Action " . $action . " does not exist");
+        break;
+    }
+  }else{
+    http_response_code(501);
+    echo json_encode("No action defined");
+  }
 }
 
 /* FOR LATER USE
@@ -29,3 +62,5 @@ if(isset($_POST["action"]) && !empty($_POST["action"])) {
   }
 
 */
+
+?>
