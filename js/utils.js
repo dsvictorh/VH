@@ -26,14 +26,9 @@ define(['js/lib/ko','js/lib/scroll-to'], function (ko, noparam) {
 
 	//Move fixed elements with scroll in small screens
 	$(window).scroll(function () {
-	    $("#site-nav nav").css({
+	    $("#site-nav nav, #toggle-box").css({
 	        left: '-' + $(this).scrollLeft() + 'px'
 	    });
-
-	    $('#toggle-box').css({
-	    	left: '-' + $(this).scrollLeft() + 'px'
-	    });
-
 	});
 
 	//Prevent KO events bubbling
