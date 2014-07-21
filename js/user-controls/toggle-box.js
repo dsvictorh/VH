@@ -28,7 +28,7 @@ define(['js/exception'], function(exception){
 				self.text(item.getText());
 				self.image(item.getImage());
 				self.url(item.getUrl());
-				self.urlText(item.getUrlTest());
+				self.urlText(item.getUrlText());
 				self.urlPre(item.getUrlPre());
 				self.urlPost(item.getUrlPost());
 

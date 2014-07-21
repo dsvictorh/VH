@@ -194,10 +194,32 @@ input, textarea{
 
 	.box{
 		width: 29%;
-		padding: 1%;
-		margin: 15px 1.16%;  
+		margin: 15px 2.16%;  
 		float: left;
 		height: 170px;
 		background-size: 100% 100%;
+		position: relative;
+		cursor:pointer;
+
+		&:hover{
+			figcaption{
+				opacity: 1;
+			}
+		}
+
+		figcaption{
+			position: absolute;
+			bottom: 40%;
+			width: 100%;
+			padding: 4%;
+			box-sizing: border-box;
+			text-align: center;
+			background: @heading;
+			color: @white;
+			opacity: 0;
+
+			-webkit-transition: opacity 0.2s linear;
+    		transition: opacity 0.2s linear;
+		}
 	}
 }
