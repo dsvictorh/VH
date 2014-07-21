@@ -14,6 +14,7 @@ This script also counts as the initialization script for the basic and global la
 event should perfectly fit inside a viewModel or user control and should be bound through Knockout.
 */
 define(['js/lib/ko','js/lib/scroll-to'], function (ko, noparam) {
+	//Site Init
 	/*
 	This functionality points to the body because it won't limit the scroll navigation links throughout
 	the page to the main navigation. In other words whatever button, link or other you want to trigger a scroll
@@ -30,6 +31,7 @@ define(['js/lib/ko','js/lib/scroll-to'], function (ko, noparam) {
 	    });
 	});
 
+	//Public access API
     return {
     	ko: ko
     };

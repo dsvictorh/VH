@@ -1,11 +1,13 @@
 //Get dependencies like specific plugins and user controls
-define(['js/user-controls/floating-box.js'], function(floatingBox){
+define(['js/user-controls/toggle-box.js'], function(toggleBox){
 	//viewModel should expect the "app" parameter which is the utils script which contains all dependencies
 	var viewModel = function(app){
-		//Private access members needed around the object
+		//Private access members
 		var self = this;
 		var ko = app.ko;
-		self.floatingBox = ko.observable();
+
+		//Public access members
+		self.toggleBox = ko.observable();
 		self.year = ko.observable();
 
 		//Initialize the object
@@ -14,11 +16,12 @@ define(['js/user-controls/floating-box.js'], function(floatingBox){
 
 	//viewModel should always have an init function to initialize the needed values
 	viewModel.prototype.init = function(ko){
-		this.floatingBox([floatingBox.createControl(ko)]);
+		//User controls are defined as any a property of viewModel to keep encapsulation and the architecture consistant
+		this.toggleBox(toggleBox.createControl(ko));
 		this.year(new Date().getFullYear());
 	}
 
-	//Public access functions for this viewModel
+	//Public access API
 	return{
 		//Create function to instantiate this viewModel
 		createView: function(app){ return new viewModel(app); }

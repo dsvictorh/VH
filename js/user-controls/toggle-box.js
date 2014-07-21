@@ -1,7 +1,7 @@
 //Get dependencies like specific plugins and user controls (nested)
 define(['js/exception'], function(exception){
 	//All user controls should expect the "ko" parameter which is the Knockout script
-	var floatingBox = function(ko){
+	var toggleBox = function(ko){
 		//Private access members
 		var self = this;
 		var ko = ko || {};
@@ -15,6 +15,7 @@ define(['js/exception'], function(exception){
 		self.urlPost = ko.observable();
 		self.boxes = ko.observableArray([]);
 
+		//the toggle box only has visibility properties and can be styled to fit the needs of the page
 		self.visible = ko.computed(function(){
 			return self.text() || self.image();
 		});
@@ -49,7 +50,7 @@ define(['js/exception'], function(exception){
 	};
 
 	//All user controls should always have an init function to initialize the needed values
-	floatingBox.prototype.init = function(){
+	toggleBox.prototype.init = function(){
 		var self = this;
 
 		$.ajax({
@@ -58,7 +59,7 @@ define(['js/exception'], function(exception){
 			dataType: 'json',
 			data: {
 				controller: 'work',
-				action: 'lisasdast'
+				action: 'list'
 			}
 		}).done(function(data){
 			var boxes = [];
@@ -69,10 +70,11 @@ define(['js/exception'], function(exception){
 			self.boxes(boxes);
 
 		}).fail(function(xhr, textStatus, errorThrown) {
-			console.error("Internal Server error: " + xhr.responseText);
+			console.error("Handle error: " + xhr.responseText);
 		});
 	}
 
+	//box data model
 	var box = function(args){
 		//Private access members
 		var self = this;
@@ -109,10 +111,10 @@ define(['js/exception'], function(exception){
 		}
 	}
 
-	//Public access functions for this user control
+	//Public access API
 	return{
 		//Create function to instantiate this user control
-		createControl: function(ko){ return new floatingBox(ko); }
+		createControl: function(ko){ return new toggleBox(ko); }
 	}
 	
 });
