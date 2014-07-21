@@ -20,9 +20,14 @@ define([], function(){
 	Exception.prototype = new Error();
 	Exception.prototype.constructor = Exception;
 
+	function formatNoHtml(message){
+		return message.replace(/(<([^>]+)>)/ig,'').replace(/\n/ig, ' ').trim();
+	}
+
 	//Public access API
 	return{
 		ObjectTypeException: ObjectTypeException,
-		Exception: Exception
+		Exception: Exception,
+		formatNoHtml: formatNoHtml
 	}
 });

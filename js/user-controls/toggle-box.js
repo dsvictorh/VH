@@ -70,7 +70,7 @@ define(['js/exception'], function(exception){
 			self.boxes(boxes);
 
 		}).fail(function(xhr, textStatus, errorThrown) {
-			console.error("Handle error: " + xhr.responseText);
+			console.error("Handle error: " + exception.formatNoHtml(xhr.responseText));
 		});
 	}
 

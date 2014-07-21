@@ -24,12 +24,30 @@ define(['js/lib/ko','js/lib/scroll-to'], function (ko, noparam) {
 		$.scrollTo($(this).attr('data-scroll'), 800, { offset: -$('#site-nav').outerHeight() })
 	});
 
-	//Move fixed nav with scroll in small screens
+	//Move fixed elements with scroll in small screens
 	$(window).scroll(function () {
 	    $("#site-nav nav").css({
 	        left: '-' + $(this).scrollLeft() + 'px'
 	    });
+
+	    $('#toggle-box').css({
+	    	left: '-' + $(this).scrollLeft() + 'px'
+	    });
+
 	});
+
+	//Prevent KO events bubbling
+	ko.bindingHandlers.preventBubble = {
+	    init: function(element, valueAccessor) {
+	        var eventName = ko.utils.unwrapObservable(valueAccessor());
+	        ko.utils.registerEventHandler(element, eventName, function(event) {
+	           event.cancelBubble = true;
+	           if (event.stopPropagation) {
+	                event.stopPropagation();
+	           }                
+	        });
+	    }        
+	};
 
 	//Public access API
     return {

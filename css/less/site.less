@@ -58,6 +58,7 @@ form{
 	top: 0;
 	background: @heading;
 	.border(2px);
+	padding: 10px 1%;
 
 	nav{
 		position: relative;
@@ -105,7 +106,6 @@ body{
 
 header{
 	h3{
-		margin-bottom: 0;
 		color: @subtitle;
 		.border(1px);	
 		text-align: center;
@@ -220,6 +220,58 @@ input, textarea{
 
 			-webkit-transition: opacity 0.2s linear;
     		transition: opacity 0.2s linear;
+		}
+	}
+}
+
+#toggle-box{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: @fancy;
+	min-width: 940px;
+	cursor: pointer;
+	display: none;
+
+	&.toggled{
+		display: block;
+
+		-webkit-animation: fadeIn 0.3s linear;
+		-ms-animation: fadeIn 0.3s linear;
+		-o-animation: fadeIn 0.3s linear;
+		animation: fadeIn 0.3s linear;
+	}
+
+	figure{
+		margin: 13% auto;
+		background: #FFF;
+		height: 300px;
+		width: 500px;
+		box-sizing: border-box;
+		border-radius: 3px;
+		position: relative;
+		cursor: default;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		figcaption{
+			background: @heading;
+			position: absolute;
+			bottom: 0;
+			padding: 2%;
+			font-size: 0.75em;
+			height: 15%;
+			overflow: auto;
+			color: @white;
+
+			a{
+				color: @toggle-link;
+
+				&:hover{
+					color: @toggle-hover;
+				}
+			}
 		}
 	}
 }
