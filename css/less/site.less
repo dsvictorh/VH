@@ -75,6 +75,14 @@ form{
 				a, img{
 					vertical-align: middle;
 				}
+
+				a{
+					color: @white;
+
+					&:hover{
+						color: @nav-hover;
+					}
+				}
 			}	
 		}
 	}
@@ -95,6 +103,25 @@ body{
 	font-family: Optima, Calibri, sans-serif;
 	font-size: 1.6em;
 	color: @font;
+
+	&.error-page{
+		&.maintenance{
+			section{
+				background: url(/img/error-pages/maintenance.png) center bottom no-repeat;
+				background-size: 600px 400px;
+			}
+		}
+
+		section{
+			height: 500px;
+			text-align: center;
+			margin-top: 0;
+		}
+
+		main.wrap{
+			margin-top: 0;
+		}
+	}
 
 	> footer{
 		p{
@@ -145,7 +172,7 @@ a, button{
 }
 
 a{
-	color: @white;
+	color: @link;
 	text-decoration: none;
 
 	&:hover{
@@ -264,14 +291,6 @@ input, textarea{
 			height: 15%;
 			overflow: auto;
 			color: @white;
-
-			a{
-				color: @toggle-link;
-
-				&:hover{
-					color: @toggle-hover;
-				}
-			}
 		}
 	}
 }
