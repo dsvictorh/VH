@@ -7,3 +7,4 @@ Disallow: /error-pages
 Disallow: /img/maintenance.png
 Disallow: /maintenance.html
 Disallow: /maintenance.enable
+Disallow: /dev
