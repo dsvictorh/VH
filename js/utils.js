@@ -33,14 +33,26 @@ define(['js/lib/ko','js/lib/scroll-to'], function (ko, noparam) {
 
 	//Prevent KO events bubbling
 	ko.bindingHandlers.preventBubble = {
-	    init: function(element, valueAccessor) {
-	        var eventName = ko.utils.unwrapObservable(valueAccessor());
+	    init: function(element, value) {
+	        var eventName = ko.utils.unwrapObservable(value());
 	        ko.utils.registerEventHandler(element, eventName, function(event) {
 	           event.cancelBubble = true;
 	           if (event.stopPropagation) {
 	                event.stopPropagation();
 	           }                
 	        });
+	    }        
+	};
+
+	ko.bindingHandlers.fadeVisible = {
+	    update: function(element, value) {
+	        var isVisible = ko.utils.unwrapObservable(value());
+	        
+			if(isVisible){
+				$(element).fadeIn(400);
+			}else{
+				$(element).fadeOut(400);
+			}
 	    }        
 	};
 

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3c.org/1999/xhml" xml:lang="en">
-	<head>
+	<head prefix="og: http://ogp.me/ns#">
 		<title>Victor Herrera R. | Software Engineer - Senior Web Developer</title>
 		<meta http-equiv="Content Type: text/html; charset=UTF-8"/>
 		<meta name="description" content="Offical site of Victor Herrera R. Software Engineer and Web Developer"/>
 		<meta name="robots" content="INDEX, FOLLOW"/>
+		<meta property="og:locale" content="en_US">
 		<meta property="og:title" content="Victor Herrera R. | Software Engineer - Senior Web Developer"/>
 		<meta property="og:image" content="http://www.vicherr.com/img/logo/fb-share.png"/>
+		<meta property="og:image:type" content="image/png"/>
+		<meta property="og:image:width" content="1200"/>
+		<meta property="og:image:height" content="630"/>
 		<meta property="og:url" content="http://www.vicherr.com"/>
+		<meta property="og:site_name" content="Vicherr">
 		<meta property="og:type" content="website"/>
 		<meta property="og:admins" content="724602645"/>
 		<meta name="twitter:card" content="summary">
 		<meta property="og:description" content="This is my personal web page/portfolio of public projects developed and conceptually designed by me. My personal designer is usually my sister Stephanie Herrera and most likely what you see here might have designing support from her"/>
 		<link rel="author" href="https://plus.google.com/+VictorHerreraR"/>
 		<link rel="icon" href="/img/logo/logo.ico">
-		<link rel="stylesheet" href="/css/keyframes.css" />
 		<link rel="stylesheet" href="/css/site.css"/>
 		<script type="text/javascript" src="/js/lib/require.js"></script>
 		<script type="text/javascript" src="/js/lib/jquery.js"></script>
@@ -104,9 +108,9 @@
 		<footer>
 			<p>All the work on this website is property of &copy;<!-- ko text: year --><!-- /ko --> V&iacute;ctor Herrera. There is no permission to copy, edit or redistribute any of my work.</p>
 		</footer>
-		<!-- ko if: toggleBox().visible -->
-		<div id="toggle-box" data-bind="click: toggleBox().clearBox, with: toggleBox, css: {toggled: toggleBox().visible}">
-			<figure data-bind="style: {backgroundImage: 'url(' + image() + ')'}, preventBubble: 'click'">
+		<!-- ko with: toggleBox -->
+		<div id="toggle-box" data-bind="if: visible, click: clearBox, fadeVisible: visible">
+			<figure data-bind="style: {backgroundImage: (image() ? 'url(' + image() + ')' : 'none')}, preventBubble: 'click'">
 				<figcaption>
 					<!-- ko text: text --><!-- /ko -->
 					<!-- ko text: urlPre --><!-- /ko -->

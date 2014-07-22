@@ -261,15 +261,6 @@ input, textarea{
 	cursor: pointer;
 	display: none;
 
-	&.toggled{
-		display: block;
-
-		-webkit-animation: fadeIn 0.3s linear;
-		-ms-animation: fadeIn 0.3s linear;
-		-o-animation: fadeIn 0.3s linear;
-		animation: fadeIn 0.3s linear;
-	}
-
 	figure{
 		margin: 10% auto;
 		background: #FFF;
@@ -287,10 +278,18 @@ input, textarea{
 			position: absolute;
 			bottom: 0;
 			padding: 2%;
-			font-size: 0.75em;
+			font-size: 0.78em;
 			height: 15%;
 			overflow: auto;
 			color: @white;
+
+			a{
+				color: @heading-hover;
+
+				&:hover{
+					color: @hover;
+				}
+			}
 		}
 	}
 }
