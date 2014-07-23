@@ -1,0 +1,56 @@
+<?php
+
+require_once("recaptchalib.php");
+require_once("validation.php");
+
+class MailService{
+  private static $error = "";
+  private static $message = "";
+
+  public static function send($fields, $recaptcha){
+      try{
+        if(check_recaptcha($recaptcha)){
+
+          $this->error = Validation::validate($fields["full-name"],
+                          [Validation::REQUIRED, Validation::ALPHANUM], $this->message);
+
+          $this->error = Validation::validate($fields["email"],
+                          [Validation::REQUIRED, Validation::EMAIL], $this->message);
+          
+          $this->error = Validation::validate($fields["message"],
+                          [Validation::REQUIRED], $this->message);
+
+          if($this->error == ""){
+            $headers = "From: " . $fields["full-name"]["value"] . " <" . $fields["email"]["value"] . ">" . "\r\n";
+            $headers .= "Reply-To: " . $fields["email"]["value"] . "\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            if(mail("your@mail.com", "Your Subject - " . $fields["full-name"]["value"], $fields["message"]["value"], $headers)){
+              $this->message = "Sent";
+            }else{
+              throw new Exception("Not sent - Please try again later");
+            }
+          }
+        }
+
+        return ["message" => $this->message, "error" => $this->error];
+      }catch(Exception $ex){             
+          throw $ex;        
+      }
+  }
+
+  private static function check_recaptcha($recaptcha){
+    $resp = recaptcha_check_answer("your_private_key",
+                                  $_SERVER["REMOTE_ADDR"],
+                                  $recaptcha["recaptcha_challenge_field"],
+                                  $recaptcha["recaptcha_response_field"]);
+
+    $this->error = "reCAPTCHA";
+    $this->message = "reCAPTCHA is not correct"; 
+
+    return $resp->is_valid;
+  }
+}
+
+?>

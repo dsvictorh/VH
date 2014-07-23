@@ -1,0 +1,24 @@
+@-webkit-keyframes fade {
+    from { opacity: 1; }
+      to { opacity: 0; }   
+}
+
+@-moz-keyframes fade {
+    from { opacity: 1; }
+      to { opacity: 0; }   
+}
+
+@-ms-animation fade {
+    from { opacity: 1; }
+      to { opacity: 0; }   
+}
+
+@-o-animation fade {
+    from { opacity: 1; }
+      to { opacity: 0; }   
+}
+
+@keyframes fade {
+    from { opacity: 1; }
+      to { opacity: 0; }   
+}

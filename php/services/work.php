@@ -1,6 +1,6 @@
 <?php
 
-require_once ("connection.php");
+require_once("connection.php");
 
 class WorkService{
     public static function list_work(){

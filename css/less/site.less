@@ -3,6 +3,7 @@
 //Structure
 form{
 	display: inline-block;
+	position: relative;
 
 	&.two-columns{
 		width: 60%;
@@ -15,6 +16,10 @@ form{
 			&.full{
 				width: 100%;
 			}
+		}
+
+		button{
+			margin-right: 3.2%;
 		}
 	}
 
@@ -37,6 +42,33 @@ form{
 			float: right;
 			margin-right: 5%;
 		}
+	}
+
+	.form-message{
+		position: absolute;
+		left: 23%;
+		text-align: center;
+		background: @heading;
+		box-sizing: border-box;
+		padding: 3%;
+		width: 50%;
+		top: 61px;
+		font-size: 0.8em;
+		color: @white;
+		display: none;
+
+		-webkit-transition: opacity 4s linear;
+    	transition: opacity 4s linear;
+
+		&.fade{
+			display: block;
+
+			-webkit-animation: fade 3s linear;
+			-ms-animation: fade 3s linear;
+			-o-animation: fade 3s linear;
+			animation: fade 3s linear;
+		}
+		
 	}
 }
 
@@ -182,7 +214,6 @@ a{
 
 button{
 	background: @light-gray;
-	margin-right: 4%;
 	border: 1px solid @gray;
 	font-size: 1.1em;
 	padding: 5px 8%;
