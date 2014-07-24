@@ -43,6 +43,12 @@ define(['js/exception'], function(exception){
 			}).done(function(data){
 				self.message(data.message);
 				self.error(data.error);
+
+				if(!self.error()){
+					self.form.find('input[name!=recaptcha_challenge_field][name!=recaptcha_response_field], textarea').each(function(){
+				    	$this.val('');
+				    });
+				}
 			}).fail(function(xhr, textStatus, errorThrown) {
 				console.error("Handle error: " + exception.formatNoHtml(xhr.responseText));
 				self.message("An Error has Occurred");
