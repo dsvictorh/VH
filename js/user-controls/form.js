@@ -11,9 +11,12 @@ define(['js/exception'], function(exception){
 		self.controller = null;
 		self.action = null;
 		self.form = null;
+		self.timeout = null;
+		self.displayTimeout = null;
 		self.message = ko.observable();
 		self.error = ko.observable();
 		self.displayMessage = ko.observable(false);
+
 
 		self.send = function(){
 			var fields = {};
@@ -37,22 +40,35 @@ define(['js/exception'], function(exception){
 					fields: fields,
 					recaptcha: recaptcha
 					}
+			}).done(function(data){
+				self.message(data.message);
+				self.error(data.error);
 			}).fail(function(xhr, textStatus, errorThrown) {
 				console.error("Handle error: " + exception.formatNoHtml(xhr.responseText));
+				self.message("An Error has Occurred");
+				self.error("ex");
 			}).always(function(data){
 				if(Recaptcha)
 					Recaptcha.reload();
 
-				self.message(data.message);
-				self.error(data.error);
 				self.displayMessage(true);
 
-				setTimeout(function(){
+				if(self.timeout){
+					clearTimeout(self.timeout);
+					self.timeout = null;
+				}
+
+				self.timeout = setTimeout(function(){
 					self.displayMessage(false);
 					self.error('');
 				}, 1000);
 
-				setTimeout(function(){
+				if(self.displayTimeout){
+					clearTimeout(self.displayTimeout);
+					self.displayTimeout = null;
+				}
+
+				self.displayTimeout = setTimeout(function(){
 					self.message('');
 				}, 2000)
 			});

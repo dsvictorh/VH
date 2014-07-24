@@ -1,10 +1,10 @@
 <?php
 class Validation{
     //RegEx
-    const SPECIAL_CHARS_REGEX = '';
-    const ALPHANUM_REGEX = '';
-    const EMAIL_REGEX = '';
-    const NUMBER_REGEX = '';
+    const SPECIAL_CHARS_REGEX = "/[\\\+\*\?\^\$\[\(\)\|\}\°\¬\!\"\#\%\/\=\'\¿\¡\¨\´\;\:\~\&\>\<]/";
+    const ALPHANUM_REGEX = "/^[a-zA-Z0-9 ,\'\$\&\.\-]*$/";
+    const EMAIL_REGEX = "/^[a-z0-9]+((-|_|\.)[a-z0-9]+)*(-|_|\.)*@[a-z0-9]+((-|_|\.)[a-z0-9]+)*(\.[a-z]{1,3})$/";
+    const NUMBER_REGEX = "/^[0-9]+$/";
 
     //Errors
     const REQUIRED = "r";
@@ -26,17 +26,17 @@ class Validation{
             return self::SPECIAL_CHARS;
         }
 
-        if(isset($validations[self::ALPHANUM]) && preg_match(self::ALPHANUM_REGEX, $field["value"])){
+        if(isset($validations[self::ALPHANUM]) && !preg_match(self::ALPHANUM_REGEX, $field["value"])){
             $message = $field["name"] . " contains non-alphanumeric characters";
             return self::ALPHANUM;
         }
 
-        if(isset($validations[self::EMAIL]) && preg_match(self::EMAIL_REGEX, $field["value"])){
+        if(isset($validations[self::EMAIL]) && !preg_match(self::EMAIL_REGEX, $field["value"])){
             $message = $field["name"] . " is not a valid e-mail address";
             return self::EMAIL;
         }
 
-        if(isset($validations[self::NUMBER]) && preg_match(self::NUMBER_REGEX, $field["value"])){
+        if(isset($validations[self::NUMBER]) && !preg_match(self::NUMBER_REGEX, $field["value"])){
             $message = $field["name"] . " contains non-numeric characters";
             return self::NUMBER;
         }

@@ -23,12 +23,6 @@
 		<script type="text/javascript" src="/js/lib/require.js"></script>
 		<script type="text/javascript" src="/js/lib/jquery.js"></script>
 		<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-		<script type="text/javascript">
-			var RecaptchaOptions = {
-			   theme: 'white',
-			   tabindex: 4
-			};
-		</script>
 	</head>
 	<body>
 		<header id="site-nav">
@@ -93,15 +87,7 @@
 						</section>
 						<section class="full">
 							<button data-bind="click: send">Send</button>
-							<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC"></script>
-						    <noscript>
-						       <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC"
-						           height="300" width="500" frameborder="0"></iframe><br>
-						       <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-						       </textarea>
-						       <input type="hidden" name="recaptcha_response_field"
-						           value="manual_challenge">
-						    </noscript>
+							<div id="recaptcha-box"></div>
 						</section>
 					</fieldset>
 				</form>
@@ -123,6 +109,14 @@
 		</div>
 		<!-- /ko -->
 		<script type="text/javascript">
+			Recaptcha.create("6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC",
+			    "recaptcha-box",
+			    {
+			      theme: "white",
+			      tabindex: 4
+			    }
+			);
+
 			//include the utils library which is the core of the application where all dependencies are loaded
 			require(['js/utils', 'js/view-models/home'], function(app, view){
 				var viewModel = view.createView(app);
