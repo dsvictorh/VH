@@ -13,16 +13,17 @@ define(['js/exception'], function(exception){
 		self.form = null;
 		self.message = ko.observable();
 		self.error = ko.observable();
+		self.displayMessage = ko.observable(false);
 
 		self.send = function(){
 			var fields = {};
 			var recaptcha = {
-				recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
-				recaptcha_response_field: $('#recaptcha_response_field').val()
+				recaptcha_challenge_field: $('#recaptcha_challenge_field').val() || '',
+				recaptcha_response_field: $('#recaptcha_response_field').val() || ''
 			};
 
 			self.form.find('input[name!=recaptcha_challenge_field][name!=recaptcha_response_field], textarea').each(function(){
-		    	fields[$(this).attr('name')] = {name: $('label[for=' + $(this).attr('id') + ']'), value: $(this).val()};
+		    	fields[$(this).attr('name')] = {name: $('label[for=' + $(this).attr('id') + ']').text(), value: $(this).val()};
 		    });
 
 
@@ -36,16 +37,24 @@ define(['js/exception'], function(exception){
 					fields: fields,
 					recaptcha: recaptcha
 					}
-				}).fail(function(xhr, textStatus, errorThrown) {
-					console.error("Handle error: " + exception.formatNoHtml(xhr.responseText));
-				}).always(function(data){
-					self.message(data.message);
-					self.error(data.error);
+			}).fail(function(xhr, textStatus, errorThrown) {
+				console.error("Handle error: " + exception.formatNoHtml(xhr.responseText));
+			}).always(function(data){
+				if(Recaptcha)
+					Recaptcha.reload();
+
+				self.message(data.message);
+				self.error(data.error);
+				self.displayMessage(true);
+
+				setTimeout(function(){
+					self.displayMessage(false);
+					self.error('');
+				}, 1000);
 
 				setTimeout(function(){
 					self.message('');
-					self.error('');
-				}, 1000);
+				}, 2000)
 			});
 		}
 		

@@ -64,6 +64,7 @@ form{
 	background: @heading;
 	.border(2px);
 	padding: 10px 1%;
+	z-index: 2;
 
 	nav{
 		position: relative;
@@ -259,7 +260,7 @@ input, textarea{
 	position: absolute;
 	left: 23%;
 	text-align: center;
-	background: @heading;
+	background: @success;
 	box-sizing: border-box;
 	padding: 3%;
 	width: 50%;
@@ -269,12 +270,15 @@ input, textarea{
 	opacity: 0;
 	z-index: -1;
 
-	-webkit-transition: opacity 1s linear, z-index 1s linear;
-	-webkit-transition: opacity 1s linear, z-index 1s linear;
+	-webkit-transition: opacity 1s linear, z-index 2s linear, background 2s linear;
+	transition: opacity 1s linear, z-index 2s linear, background 2s linear;
 
 	&.fade{
 		opacity: 1;
 		z-index: 1;
+
+		-webkit-transition-property: none;
+		transition-property: none;
 	}
 
 	&.error{

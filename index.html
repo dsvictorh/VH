@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="/css/site.css"/>
 		<script type="text/javascript" src="/js/lib/require.js"></script>
 		<script type="text/javascript" src="/js/lib/jquery.js"></script>
+		<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 		<script type="text/javascript">
 			var RecaptchaOptions = {
 			   theme: 'white',
@@ -76,19 +77,19 @@
 			<section id="contact">
 				<h3>Contact Me</h3>
 				<form id="contact-me" class="two-columns" data-bind="with: form">
-					<p class="floating-message" data-bind="css: {fade: message, error: error}">Sent</p>
+					<p class="floating-message" data-bind="text: message, css: {fade: displayMessage, error: error}"></p>
 					<fieldset>
 						<section>
 							<label for="full-name">Full Name: </label>
-							<input type="text" name="full-name" id="full-name" placeholder="e.g.: John Smith" required/>
+							<input type="text" name="full-name" id="full-name" placeholder="e.g.: John Smith"/>
 						</section>
 						<section>
 							<label for="email">E-Mail: </label>
-							<input type="email" name="email" id="email" placeholder="e.g.: john@smith.com" required/>
+							<input type="email" name="email" id="email" placeholder="e.g.: john@smith.com"/>
 						</section>
 						<section class="full">
 							<label for="message">Message: </label>
-							<textarea name="message" id="message" placeholder="Talk to me" required></textarea>
+							<textarea name="message" id="message" placeholder="Talk to me"></textarea>
 						</section>
 						<section class="full">
 							<button data-bind="click: send">Send</button>
