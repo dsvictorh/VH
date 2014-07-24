@@ -19,7 +19,6 @@
 		<meta property="og:description" content="This is my personal web page/portfolio of public projects developed and conceptually designed by me. My personal designer is usually my sister Stephanie Herrera and most likely what you see here might have designing support from her"/>
 		<link rel="author" href="https://plus.google.com/+VictorHerreraR"/>
 		<link rel="icon" href="/img/logo/logo.ico">
-		<link rel="stylesheet" href="/css/keyframes.css"/>
 		<link rel="stylesheet" href="/css/site.css"/>
 		<script type="text/javascript" src="/js/lib/require.js"></script>
 		<script type="text/javascript" src="/js/lib/jquery.js"></script>
@@ -76,8 +75,8 @@
 			</section>
 			<section id="contact">
 				<h3>Contact Me</h3>
-				<form name="contact-me" class="two-columns">
-					<p class="form-message">Sent</p>
+				<form id="contact-me" class="two-columns" data-bind="with: form">
+					<p class="floating-message" data-bind="css: {fade: message, error: error}">Sent</p>
 					<fieldset>
 						<section>
 							<label for="full-name">Full Name: </label>
@@ -92,7 +91,7 @@
 							<textarea name="message" id="message" placeholder="Talk to me" required></textarea>
 						</section>
 						<section class="full">
-							<button>Send</button>
+							<button data-bind="click: send">Send</button>
 							<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC"></script>
 						    <noscript>
 						       <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LdYFfcSAAAAACyS7lYR6NuFQjR6D5pC7cgvAQoC"

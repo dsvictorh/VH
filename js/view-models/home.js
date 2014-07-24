@@ -1,5 +1,5 @@
 //Get dependencies like specific plugins and user controls
-define(['js/user-controls/toggle-box.js'], function(toggleBox){
+define(['js/user-controls/toggle-box.js', 'js/user-controls/form.js'], function(toggleBox, form){
 	//viewModel should expect the "app" parameter which is the utils script which contains all dependencies
 	var viewModel = function(app){
 		//Private access members
@@ -8,6 +8,7 @@ define(['js/user-controls/toggle-box.js'], function(toggleBox){
 
 		//Public access members
 		self.toggleBox = ko.observable();
+		self.form = ko.observable();
 		self.year = ko.observable();
 
 		//Initialize the object
@@ -18,6 +19,7 @@ define(['js/user-controls/toggle-box.js'], function(toggleBox){
 	viewModel.prototype.init = function(ko){
 		//User controls are defined as any a property of viewModel to keep encapsulation and the architecture consistant
 		this.toggleBox(toggleBox.createControl(ko));
+		this.form(form.createControl(ko, { form: 'contact-me', controller: 'mail', action: 'send'}));
 		this.year(new Date().getFullYear());
 	}
 

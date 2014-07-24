@@ -54,7 +54,7 @@ function handle_mail($action){
     switch($action){
       case "send":
         try{
-          echo json_encode(MailService::send());
+          echo json_encode(MailService::send($_REQUEST["fields"], $_REQUEST["recaptcha"]));
         }catch(Exception $ex){
           http_response_code(500);
           echo json_encode($ex->getMessage());
