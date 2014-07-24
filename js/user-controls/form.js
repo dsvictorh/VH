@@ -46,7 +46,7 @@ define(['js/exception'], function(exception){
 
 				if(!self.error()){
 					self.form.find('input[name!=recaptcha_challenge_field][name!=recaptcha_response_field], textarea').each(function(){
-				    	$this.val('');
+				    	$(this).val('');
 				    });
 				}
 			}).fail(function(xhr, textStatus, errorThrown) {
