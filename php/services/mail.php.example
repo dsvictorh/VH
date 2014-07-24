@@ -9,8 +9,8 @@ class MailService{
 
   public static function send($fields, $recaptcha){
       try{
-        if(check_recaptcha($recaptcha)){
-          
+        if(self::check_recaptcha($recaptcha)){
+
           self::$error = Validation::validate($fields["full-name"],
                           [Validation::REQUIRED=>1, Validation::ALPHANUM=>1], self::$message);
 
