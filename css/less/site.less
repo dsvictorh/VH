@@ -118,6 +118,13 @@ body{
 			}
 		}
 
+		&.not-found{
+			section{
+				background: url(/img/error-pages/not-found.png) center bottom no-repeat;
+				background-size: 730px 400px;
+			}
+		}
+
 		section{
 			height: 500px;
 			text-align: center;
@@ -286,6 +293,10 @@ input, textarea{
 	}
 }
 
+#contact{
+	background: url(/img/layout/mail.png) no-repeat 90%;
+}
+
 #toggle-box{
 	position: fixed;
 	top: 0;
@@ -299,8 +310,8 @@ input, textarea{
 	figure{
 		margin: 10% auto;
 		background: #FFF;
-		height: 300px;
-		width: 500px;
+		height: 400px;
+		width: 600px;
 		box-sizing: border-box;
 		border-radius: 3px;
 		position: relative;
@@ -314,7 +325,7 @@ input, textarea{
 			bottom: 0;
 			padding: 2%;
 			font-size: 0.78em;
-			height: 15%;
+			height: 10%;
 			overflow: auto;
 			color: @white;
 
