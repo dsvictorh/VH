@@ -6,12 +6,12 @@ form{
 	position: relative;
 
 	&.two-columns{
-		width: 60%;
+		width: 65%;
 
 		section{
-			display: inline-block;
+			float: left;
 			margin-bottom: 5px;
-			width: 48%;
+			width: 50%;
 
 			&.full{
 				width: 100%;
@@ -19,7 +19,7 @@ form{
 		}
 
 		button{
-			margin-right: 3.2%;
+			margin-right: 2.2%;
 		}
 	}
 
@@ -35,7 +35,7 @@ form{
 		}
 
 		textarea{
-			height: 100px;
+			height: 150px;
 		}
 
 		button{
@@ -74,11 +74,12 @@ form{
 
 			li{
 				float: left;
-				font-size: 1.4em;
-				line-height: 1.4em;
-				margin-left: 14.5%;
+				font-size: 1em;
+				line-height: 2em;
+				margin-left: 14%;
+				text-transform: uppercase;
 
-				a, img{
+				img{
 					vertical-align: middle;
 				}
 
@@ -106,7 +107,7 @@ html{
 }
 
 body{
-	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-family:"PT Sans", sans-serif;
 	font-size: 1.6em;
 	color: @font;
 
@@ -144,17 +145,9 @@ body{
 	}
 }
 
-header{
-	h3{
-		color: @subtitle;
-		.border(1px);	
-		text-align: center;
-		padding: 10px 1%;
-		margin-bottom: 20px;
-	}
-}
-
 h1{
+	font-family: Fontin, "Copperplate / Copperplate Gothic Light", san-serif;
+	font-style: italic;
 	text-align: center;
 	font-size: 3.5em;
 	.border(2px);
@@ -162,14 +155,21 @@ h1{
 }
 
 h2{
+	font-family:"Josefin Slab", sans-serif;
 	text-align: center;
 	font-size: 1.3em;
 	color: @subtitle;
+
 }
 
 h3{
+	font-family:"Fontin", sans-serif;
+	text-align: center;
 	font-size: 1.5em;
-	margin-bottom: 25px;
+	color: @subtitle;
+	padding: 0 1% 15px;
+	margin-bottom: 20px;
+	.border(1px);
 }
 
 p{
@@ -304,7 +304,7 @@ input, textarea{
 }
 
 #contact{
-	background: url(/img/layout/mail.png) no-repeat 90%;
+	background: url(/img/layout/mail.png) @box  92% 75%  no-repeat;
 }
 
 #toggle-box{
@@ -334,16 +334,18 @@ input, textarea{
 			position: absolute;
 			bottom: 0;
 			padding: 2%;
-			font-size: 0.78em;
+			font-size: 0.8em;
 			height: 10%;
 			overflow: auto;
 			color: @white;
+			line-height: 1.3em;
+
 
 			a{
 				color: @heading-hover;
 
 				&:hover{
-					color: @hover;
+					color: @nav-hover;
 				}
 			}
 		}
