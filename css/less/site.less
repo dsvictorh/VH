@@ -65,6 +65,7 @@ form{
 	.border(2px);
 	padding: 10px 1%;
 	z-index: 2;
+	box-sizing: border-box;
 
 	nav{
 		position: relative;
@@ -305,6 +306,48 @@ input, textarea{
 
 #contact{
 	background: url(/img/layout/mail.png) @box  92%  no-repeat;
+
+	header{
+		position: relative;
+
+		.social{
+			font-family: 'Font Awesome';
+			position: absolute;
+			right: 0;
+			top: -4px;
+			font-size: 2.2em;
+			width: 19.2%;
+
+			i{
+				margin-left: 5%;
+				cursor: pointer;
+
+				&:first-child{
+					margin: 0;
+				}
+
+				.facebook{
+					color: @facebook;
+				}
+
+				.twitter{
+					color: @twitter;
+				}
+
+				.gplus{
+					color: @gplus;
+				}
+
+				.linkedin{
+					color: @linkedin;
+				}
+
+				a:hover{
+					color: @subtitle;
+				}
+			}
+		}
+	}
 }
 
 #toggle-box{
