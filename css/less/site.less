@@ -108,11 +108,14 @@ html{
 }
 
 body{
+	background: url(/img/layout/background.jpg) center fixed no-repeat;
 	font-family:"PT Sans", sans-serif;
 	font-size: 1.6em;
 	color: @font;
 
 	&.error-page{
+		background: none;
+
 		&.maintenance{
 			section{
 				background: url(/img/error-pages/maintenance.png) center bottom no-repeat;
@@ -147,8 +150,8 @@ body{
 }
 
 h1{
-	font-family: Fontin, san-serif;
-	font-style: italic;
+	font-family: Lato, san-serif;
+	text-transform: uppercase;
 	text-align: center;
 	font-size: 3.5em;
 	.border(2px);
@@ -156,7 +159,7 @@ h1{
 }
 
 h2{
-	font-family:"Josefin Slab", sans-serif;
+	font-family:"PT Sans", sans-serif;
 	text-align: center;
 	font-size: 1.3em;
 	color: @subtitle;
@@ -164,7 +167,7 @@ h2{
 }
 
 h3{
-	font-family:"Fontin", sans-serif;
+	font-family: "Source Sans Pro", sans-serif;
 	text-align: center;
 	font-size: 1.5em;
 	color: @subtitle;
