@@ -70,7 +70,7 @@
 					</header>
 					<main class="multi-box" data-bind="foreach: toggleBox().boxes">
 						<figure class="box" data-bind="click: $root.toggleBox().setBox, style: {backgroundImage: 'url(' + getImage() + ')'}">
-							<figcaption>Click me</figcaption>
+							<figcaption data-bind="text: getProject()"></figcaption>
 						</figure>
 					</main>
 				</article>
@@ -120,6 +120,7 @@
 		<!-- ko with: toggleBox -->
 		<div id="toggle-box" data-bind="if: visible, click: clearBox, fadeVisible: visible">
 			<figure data-bind="style: {backgroundImage: (image() ? 'url(' + image() + ')' : 'none')}, preventBubble: 'click'">
+				<h4 data-bind="text: project"></h4>
 				<figcaption>
 					<!-- ko text: text --><!-- /ko -->
 					<!-- ko text: urlPre --><!-- /ko -->

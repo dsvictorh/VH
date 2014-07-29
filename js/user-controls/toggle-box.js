@@ -7,6 +7,7 @@ define(['js/exception'], function(exception){
 		var ko = ko || {};
 
 		//Public access members
+		self.project = ko.observable();
 		self.text = ko.observable();
 		self.image = ko.observable();
 		self.url = ko.observable();
@@ -25,6 +26,7 @@ define(['js/exception'], function(exception){
 				if(!(item instanceof box))
 					throw new exception.ObjectTypeException('Event object must be of type box');
 
+				self.project(item.getProject());
 				self.text(item.getText());
 				self.image(item.getImage());
 				self.url(item.getUrl());
@@ -38,6 +40,7 @@ define(['js/exception'], function(exception){
 		}
 
 		self.clearBox = function(){
+			self.project('');
 			self.text('');
 			self.image('');
 			self.urlText('');
@@ -78,6 +81,7 @@ define(['js/exception'], function(exception){
 	var box = function(args){
 		//Private access members
 		var self = this;
+		var project = args.project || '';
 		var text = args.description || '';
 		var image = args.img_url || '';
 		var url = args.external_link || '';
@@ -86,6 +90,10 @@ define(['js/exception'], function(exception){
 		var urlPost = args.external_link_post || '';
 
 		//Public access members
+		self.getProject = function(){
+			return project;
+		}
+
 		self.getText = function(){
 			return text;
 		}

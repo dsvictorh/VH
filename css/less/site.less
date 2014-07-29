@@ -108,7 +108,7 @@ html{
 }
 
 body{
-	background: url(/img/layout/background.jpg) center fixed no-repeat;
+	background: url(/img/layout/background.png) bottom left fixed no-repeat;
 	font-family:"PT Sans", sans-serif;
 	font-size: 1.6em;
 	color: @font;
@@ -382,8 +382,14 @@ input, textarea{
 		background-position: center;
 		background-repeat: no-repeat;
 
+		h4{
+			text-align: center;
+			padding-top: 10px;
+			font-size: 1.5em;
+		}
+
 		figcaption{
-			background: @heading;
+			background: @toggle-text;
 			position: absolute;
 			bottom: 0;
 			padding: 2%;
