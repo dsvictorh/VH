@@ -69,7 +69,7 @@ define(['js/exception'], function(exception){
 			var boxes = [];
 			var errorPages = []
 			for(i = 0; i < data.length; i++){
-				if(data[i].is_error_page){
+				if(parseInt(data[i].is_error_page)){
 					errorPages.push(new box(data[i]));
 				}else{
 					boxes.push(new box(data[i]));
