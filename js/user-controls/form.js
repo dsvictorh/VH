@@ -54,9 +54,6 @@ define(['js/exception'], function(exception){
 				self.message("An Error has Occurred");
 				self.error("ex");
 			}).always(function(data){
-				if(Recaptcha)
-					Recaptcha.reload();
-
 				self.displayMessage(true);
 
 				if(self.timeout){
@@ -77,6 +74,9 @@ define(['js/exception'], function(exception){
 				self.displayTimeout = setTimeout(function(){
 					self.message('');
 				}, 2000)
+
+				if(Recaptcha)
+					Recaptcha.reload();
 			});
 		}
 		
