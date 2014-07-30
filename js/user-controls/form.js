@@ -97,10 +97,9 @@ define(['js/exception'], function(exception){
 			self.action = args.action;
 			;
 
-			if(!(self.form = $('#' + args.form)).is('form')){
+			if(!(self.form = $('#' + args.form)).is('form'))
 				throw new exception.Exception('#' + args.form + ' is not a valid form element');
-			}
-
+			
 		}catch(error){
 			console.error("Form user control error: " + exception.formatNoHtml(error.message));
 		}
