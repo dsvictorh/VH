@@ -15,10 +15,11 @@ define(['js/exception'], function(exception){
 		self.urlPre = ko.observable();
 		self.urlPost = ko.observable();
 		self.boxes = ko.observableArray([]);
+		self.errorPages = ko.observableArray([]);
 
-		//the toggle box only has visibility properties and can be styled to fit the needs of the page
-		self.visible = ko.computed(function(){
-			return self.text() || self.image();
+
+		self.hasDescription = ko.computed(function(){
+			return self.text() || self.url();
 		});
 
 		self.setBox = function(item){
@@ -66,11 +67,18 @@ define(['js/exception'], function(exception){
 			}
 		}).done(function(data){
 			var boxes = [];
+			var errorPages = []
 			for(i = 0; i < data.length; i++){
-				boxes.push(new box(data[i]));
+				if(data[i].isErrorPage){
+					errorPages.push(new box(data[i]));
+				}else{
+					boxes.push(new box(data[i]));
+				}
+
 			}
 
 			self.boxes(boxes);
+			self.errorPages(errorPages);
 
 		}).fail(function(xhr, textStatus, errorThrown) {
 			console.error("Handle error: " + exception.formatNoHtml(xhr.responseText));
@@ -88,6 +96,7 @@ define(['js/exception'], function(exception){
 		var urlText = args.external_link_text || '';
 		var urlPre = args.external_link_pre || '';
 		var urlPost = args.external_link_post || '';
+		var type = args.isErrorPage || '';
 
 		//Public access members
 		self.getProject = function(){

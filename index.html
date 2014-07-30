@@ -7,7 +7,7 @@
 		<meta name="robots" content="INDEX, FOLLOW"/>
 		<meta property="og:locale" content="en_US">
 		<meta property="og:title" content="Victor Herrera R. | Software Engineer - Senior Web Developer"/>
-		<meta property="og:image" content="http://www.vicherr.com/img/logo/fb-share.jpg"/>
+		<meta property="og:image" content="http://www.vicherr.com/img/layout/fb-share.jpg"/>
 		<meta property="og:image:type" content="image/png"/>
 		<meta property="og:image:width" content="1200"/>
 		<meta property="og:image:height" content="630"/>
@@ -67,10 +67,18 @@
 
 						<p>To be honest, I&rsquo;ve worked a lot in private and/or internal projects so there might not be a lot in here to show for now. Still, I believe this website is perfectly capable of showing my skills. Nonetheless, my portfolio is available for you to check out. So take a look, you&rsquo;ll find some interesting work:</p>
 					</header>
-					<main class="multi-box" data-bind="foreach: toggleBox().boxes">
-						<figure class="box" data-bind="click: $root.toggleBox().setBox, style: {backgroundImage: 'url(' + getImage() + ')'}">
-							<figcaption data-bind="text: getProject()"></figcaption>
-						</figure>
+					<main>
+						<section class="multi-box" data-bind="foreach: toggleBox().boxes()">
+							<figure class="box" data-bind="click: $root.toggleBox().setBox, style: {backgroundImage: 'url(' + getImage() + ')'}">
+								<figcaption data-bind="text: getProject()"></figcaption>
+							</figure>
+						</section>
+						<p>The artwork in my site was created by <a href="http://wwww.stephanieherreraart.com" target="_blank">Stephanie Herrera</a> and in my humble opinion the best part of this entire site, bare with me for a second, is the error page section. I know this is kind of unusual but I just love them! I invite you to check them out since most likely is something that you probably wouldn't even see if I didn&rsquo;t tell you about them:</p>
+						<section class="multi-box" data-bind="foreach: toggleBox().errorPages()">
+							<figure class="box" data-bind="click: $root.toggleBox().setBox, style: {backgroundImage: 'url(' + getImage() + ')'}">
+								<figcaption data-bind="text: getProject()"></figcaption>
+							</figure>
+						</section>
 					</main>
 				</article>
 			</section>
@@ -117,15 +125,17 @@
 			<p>All the work on this website is property of &copy;<!-- ko text: year --><!-- /ko --> V&iacute;ctor Herrera. There is no permission to copy, edit or redistribute any of my work.</p>
 		</footer>
 		<!-- ko with: toggleBox -->
-		<div id="toggle-box" data-bind="if: visible, click: clearBox, fadeVisible: visible">
+		<div id="toggle-box" data-bind="if: image(), click: clearBox, fadeVisible: image()">
 			<figure data-bind="style: {backgroundImage: (image() ? 'url(' + image() + ')' : 'none')}, preventBubble: 'click'">
 				<h4 data-bind="text: project"></h4>
+				<!-- ko if: hasDescription -->
 				<figcaption>
 					<!-- ko text: text --><!-- /ko -->
 					<!-- ko text: urlPre --><!-- /ko -->
 					<a data-bind="attr{href: url}, text: urlText" target="_blank"></a>
 					<!-- ko text: urlPost --><!-- /ko -->
 				</figcaption>
+				<!-- /ko -->
 			</figure>
 		</div>
 		<!-- /ko -->
