@@ -98,9 +98,10 @@ define(['js/exception'], function(exception){
 			self.form = $('#' + args.form);
 
 			if(self.form && self.form.is('form')){
-				self.form.on('keypress', 'input', function(event){
-					if(event.keyCode == 13)
+				self.form.on('keyup', 'input', function(event){
+					if(event.keyCode == 13){
 			    		self.send();
+					}
 			    });
 			}else{
 				throw new exception.Exception('#' + args.form + ' is not a valid form element');
