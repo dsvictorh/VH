@@ -148,6 +148,11 @@
 			    }
 			);
 
+			//Config require without loading timeout
+			require.config({
+				waitSeconds: 0
+			});
+
 			//include the utils library which is the core of the application where all dependencies are loaded
 			require(['js/utils', 'js/view-models/home'], function(app, view){
 				var viewModel = view.createView(app);

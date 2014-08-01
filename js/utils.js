@@ -13,12 +13,6 @@ home.js view model and the floating-box.js user control.
 This script also counts as the initialization script for the basic and global layout of the page (e.g.: the navigation links). Any custom 
 event should perfectly fit inside a viewModel or user control and should be bound through Knockout.
 */
-
-//Config require without loading timeout
-require.config({
-	waitSeconds: 0
-});
-
 define(['js/lib/ko','js/lib/scroll-to'], function (ko, noparam) {
 	//Site Init
 	/*
