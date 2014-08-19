@@ -45,15 +45,21 @@ form{
 	}
 }
 
-.wrap{
+main{
 	width: @site-width;
-	margin: 0 auto;
+	margin: 100px auto 0;
+	padding: 20px 0;
 
 	> section{
 		margin: 70px 0 0;
 		padding: 2%;
 		.box;
 	}
+}
+
+.wrap{
+	width: @site-width;
+	margin: 0 auto;
 }
 
 #site-nav{
@@ -96,12 +102,6 @@ form{
 	}
 }
 
-main.wrap{
-	margin-top: 100px;
-	padding: 20px 0;
-}
-
-
 //Layout
 html{
 	font-size: 62.5%;
@@ -137,13 +137,20 @@ body{
 			}
 		}
 
+		&.server-error{
+			section{
+				background: url(/img/error-pages/server-error.png) center bottom no-repeat;
+				background-size: 730px 400px;
+			}
+		}
+
 		section{
 			height: 500px;
 			text-align: center;
 			margin-top: 0;
 		}
 
-		main.wrap{
+		main{
 			margin-top: 0;
 		}
 	}
