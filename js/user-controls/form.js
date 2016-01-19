@@ -95,7 +95,7 @@ define(['js/exception'], function(exception){
 
 			self.controller = args.controller;
 			self.action = args.action;
-			;
+			
 
 			if(!(self.form = $('#' + args.form)).is('form'))
 				throw new exception.Exception('#' + args.form + ' is not a valid form element');
